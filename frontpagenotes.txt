@@ -1,0 +1,7 @@
+Front page contains a section for the featured article that is also
+periodically replaced by advertisements:
+  I think this  is potentially hurting the readers experience
+  as there is no clear separation between feature story and advertisement
+  section. I think this leads to confusion.
+
+
