@@ -1,0 +1,138 @@
+<?php
+
+
+/**
+ * Implements Hook_block_info()
+ */
+
+function hub_ads_block_info() {
+  $blocks['block_ads_header'] = array(
+    'info' => t('Ads: Header'),
+  );
+  $blocks['block_ads_sidebar_left'] = array(
+    'info'  => t('Ads: Sidebar Left'),
+  );
+  $blocks['block_ads_sidebar_right'] = array(
+    'info'  => t('Ads: Sidebar Right'),
+  );
+  
+  return $blocks;
+}
+
+function hub_ads_block_view($delta='') {
+  $block = array();
+  
+  switch($delta) {
+    case 'block_ads_header' :
+      $block['content'] = hub_ads_header_view();
+      break;
+    case 'block_ads_sidebar_left' :
+      $block['content'] = hub_ads_sidebar_left_view();
+      break;
+    case 'block_ads_sidebar_right' :
+      $block['content'] = hub_ads_sidebar_right_view();
+      break;
+  }
+  
+  return $block;
+}
+
+function hub_ads_header_view() {
+  $block = array();
+  
+  $nodes = node_load_multiple(array(), array('type'=> 'Ads'));
+  $banner_nodes = array();
+  
+  foreach ($nodes as $key => $value) {
+    $term = taxonomy_term_load($value->field_ad_type[LANGUAGE_NONE][0]['tid']);
+    if ($term->name == 'header') {
+      $banner_nodes[] = $value;
+    }
+  }
+  
+  if (!empty($banner_nodes)) {
+    $count = count($banner_nodes);
+  }
+  
+  $image = $banner_nodes[rand(0, $count - 1)]->field_ad_image[LANGUAGE_NONE][0];
+  global $base_path;
+  
+  $block = array(
+    'image' => array(
+      '#prefix' => '<div class="ads_header">',
+      '#type' => 'markup',
+      '#markup' => '<img src="' . $base_path . 'sites/default/files/' . $image['filename'] . '">"',  //this is very clumsy needs fixed
+      '#suffix' => '</div>',
+    ),
+  );
+  
+  
+  return $block;
+}
+
+
+function hub_ads_sidebar_left_view() {
+  $block = array();
+  
+  $nodes = node_load_multiple(array(), array('type'=> 'Ads'));
+  $banner_nodes = array();
+  
+  foreach ($nodes as $key => $value) {
+    $term = taxonomy_term_load($value->field_ad_type[LANGUAGE_NONE][0]['tid']);
+    if ($term->name == 'sidebar') {
+      $banner_nodes[] = $value;
+    }
+  }
+  
+  if (!empty($banner_nodes)) {
+    $count = count($banner_nodes);
+  }
+  
+  $image = $banner_nodes[rand(0, $count - 1)]->field_ad_image[LANGUAGE_NONE][0];
+  global $base_path;
+  
+  $block = array(
+    'image' => array(
+      '#prefix' => '<div class="ads_sidebar_left">',
+      '#type' => 'markup',
+      '#markup' => '<img src="' . $base_path . 'sites/default/files/' . $image['filename'] . '">"',  //this is very clumsy needs fixed
+      '#suffix' => '</div>',
+    ),
+  );
+  
+  
+  return $block;
+}
+
+function hub_ads_sidebar_right_view() {
+  $block = array();
+  
+  $nodes = node_load_multiple(array(), array('type'=> 'Ads'));
+  $banner_nodes = array();
+  
+  foreach ($nodes as $key => $value) {
+    $term = taxonomy_term_load($value->field_ad_type[LANGUAGE_NONE][0]['tid']);
+    if ($term->name == 'sidebar') {
+      $banner_nodes[] = $value;
+    }
+  }
+  
+  if (!empty($banner_nodes)) {
+    $count = count($banner_nodes);
+  }
+  
+  $image = $banner_nodes[rand(0, $count - 1)]->field_ad_image[LANGUAGE_NONE][0];
+  global $base_path;
+  
+  $block = array(
+    'image' => array(
+      '#prefix' => '<div class="ads_sidebar_right">',
+      '#type' => 'markup',
+      '#markup' => '<img src="' . $base_path . 'sites/default/files/' . $image['filename'] . '">"',  //this is very clumsy needs fixed
+      '#suffix' => '</div>',
+    ),
+  );
+  
+  
+  return $block;
+}
