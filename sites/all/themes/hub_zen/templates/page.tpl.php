@@ -74,6 +74,8 @@
 
   <header id="header" role="banner">
 
+    <?php print render($page['header']); ?>
+
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
       <img src="<?php print ($base_path . drupal_get_path('theme','hub_zen') . '/images/masthead_logo.png'); ?>" style="margin-left:100px;margin-bottom:-10px;">
@@ -97,7 +99,7 @@
       </nav>
     <?php endif; ?>
 
-    <?php print render($page['header']); ?>
+    
 
   </header>
 
