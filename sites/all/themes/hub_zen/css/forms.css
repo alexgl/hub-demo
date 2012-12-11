@@ -142,3 +142,7 @@ form table .item-list ul {
 td.menu-disabled {
   background: #ccc;
 }
+
+#search-block-form {
+  float: right;
+}

@@ -80,16 +80,22 @@ li a.active {
 
 #main-menu {
   background: #376E95;
+  text-indent: 15px;
 }
 
 #main-menu li a {
   color: white !important;
+  text-decoration: none;
 }
 
 #secondary-menu {
   float: right; /* LTR */
 }
 
+#secondary-menu a {
+  color: #376E95;
+  text-decoration: none;
+}
 /*
  * Menu blocks
  */
@@ -106,3 +112,4 @@ li a.active {
 
 .block-menu-block {
 }
+
