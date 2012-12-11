@@ -79,6 +79,11 @@ li a.active {
  */
 
 #main-menu {
+  background: #376E95;
+}
+
+#main-menu li a {
+  color: white !important;
 }
 
 #secondary-menu {
